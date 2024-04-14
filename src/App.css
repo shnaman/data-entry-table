@@ -38,17 +38,21 @@ body {
   font-weight: 600;
 }
 
-input[type="text"],
-button {
+
+input[type="text"],button,
+select {
   appearance: none;
   outline: none;
-  border: 0;
+  border: 1px solid #ddd;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
   font-family: "Playpen Sans", cursive;
+  color: #333;
+  
 }
+
 
 button {
   font-weight: 600;

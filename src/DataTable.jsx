@@ -1,13 +1,20 @@
+
 import { useRef, useEffect, useState } from "react";
 
 const DataTable = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    { id: 1, name: "John", gender: "Male", age: 30 },
+    { id: 2, name: "Alex", gender: "Male", age: 35 },
+    { id: 3, name: "marry", gender: "Female", age: 45 },
+    { id: 4, name: "marlo", gender: "Female", age: 35 }
+  ]);
+
   const [editId, setEditId] = useState(false);
   const [formData, setFormData] = useState({ name: "", gender: "", age: "" });
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const outsideClick = useRef(false);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   let filteredItems = data.filter((item) =>
@@ -94,13 +101,17 @@ const DataTable = () => {
             value={formData.name}
             onChange={handleInputChange}
           />
-          <input
-            type="text"
-            placeholder="Gender"
+          
+          <select
             name="gender"
             value={formData.gender}
             onChange={handleInputChange}
-          />
+          >
+            <option value="">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+
           <input
             type="text"
             placeholder="Age"
@@ -170,7 +181,6 @@ const DataTable = () => {
                   >
                     Edit
                   </button>
-
                   <button
                     className="delete"
                     onClick={() => handleDelete(item.id)}
@@ -204,3 +214,4 @@ const DataTable = () => {
 };
 
 export default DataTable;
+
